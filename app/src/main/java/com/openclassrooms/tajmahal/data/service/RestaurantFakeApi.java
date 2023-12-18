@@ -8,26 +8,28 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * A mock implementation of the {@link RestaurantApi} for testing and development purposes.
+ * Une implémentation fictive de {@link RestaurantApi} à des fins de test et de développement.
  * <p>
- * This class simulates an API by returning a hard-coded {@link Restaurant} object, eliminating the
- * need for real network or database calls. Such fake or mock implementations are commonly used in
- * unit testing and when prototyping an application.
+ * Cette classe simule une API en retournant un objet {@link Restaurant} codé en dur, éliminant le
+ * besoin d'appels réels au réseau ou à la base de données. De telles implémentations fictives ou simulées sont couramment utilisées dans
+ * les tests unitaires et lors du prototypage d'une application.
  * </p>
  * <p>
- * For beginners: In software development, a mock is a simulated version of an external system
- * (like an API). Mocks are used to isolate and test certain parts of the software without
- * depending on external systems. By using a mock, developers can simulate how the real system
- * would behave. In this case, instead of making a real API call to get restaurant details,
- * we are using hardcoded values.
+ * Pour les débutants : En développement logiciel, un mock est une version simulée d'un système externe
+ * (comme une API). Les mocks sont utilisés pour isoler et tester certaines parties du logiciel sans
+ * dépendre de systèmes externes. En utilisant un mock, les développeurs peuvent simuler comment le système réel
+ * se comporterait. Dans ce cas, au lieu de faire un véritable appel API pour obtenir les détails d'un restaurant,
+ * nous utilisons des valeurs codées en dur.
+ * </p>
  *
  * <p>
- * This class returns details of a specific restaurant, "Taj Mahal", with pre-defined attributes.
+ * Cette classe retourne les détails d'un restaurant spécifique, "Taj Mahal", avec des attributs prédéfinis.
  * </p>
  *
  * @see Restaurant
  * @see RestaurantApi
  */
+
 public class RestaurantFakeApi implements RestaurantApi {
 
     List<Review> reviews = Arrays.asList(
@@ -40,15 +42,16 @@ public class RestaurantFakeApi implements RestaurantApi {
 
 
     /**
-     * Retrieves a hard-coded {@link Restaurant} object for the "Taj Mahal".
+     * Récupère un objet {@link Restaurant} codé en dur pour le "Taj Mahal".
      * <p>
-     * This method simulates an API call by immediately returning a Restaurant object
-     * with pre-defined attributes. The object represents the "Taj Mahal" restaurant
-     * with specific details.
+     * Cette méthode simule un appel API en retournant immédiatement un objet Restaurant
+     * avec des attributs prédéfinis. L'objet représente le restaurant "Taj Mahal"
+     * avec des détails spécifiques.
      * </p>
      *
-     * @return The hard-coded {@link Restaurant} object for the "Taj Mahal".
+     * @return L'objet {@link Restaurant} codé en dur pour le "Taj Mahal".
      */
+
     @Override
     public Restaurant getRestaurant() {
         return new Restaurant("Taj Mahal", "Indien", "11h30 - 14h30・18h30 - 22h00",
@@ -58,14 +61,15 @@ public class RestaurantFakeApi implements RestaurantApi {
 
 
     /**
-     * Retrieves a hard-coded {@link Review} object for the "Taj Mahal".
+     * Récupère un objet {@link Review} codé en dur pour le "Taj Mahal".
      * <p>
-     * This method simulates an API call by immediately returning a Review list
-     * with pre-defined attributes.
+     * Cette méthode simule un appel API en retournant immédiatement une liste de critiques
+     * avec des attributs prédéfinis.
      * </p>
      *
-     * @return The hard-coded list {@link Review} for the "Taj Mahal".
+     * @return La liste codée en dur de {@link Review} pour le "Taj Mahal".
      */
+
     @Override
     public List<Review> getReviews() {
         return reviews;
