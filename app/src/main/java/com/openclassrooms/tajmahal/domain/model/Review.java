@@ -4,31 +4,32 @@ import java.util.Objects;
 
 
 /**
- * Represents a user review.
- * This class encapsulates all the details of a review, including the username of the reviewer,
- * their profile picture, the comment they left, and the rating they gave.
+ * Représente un avis d'utilisateur.
+ * Cette classe encapsule tous les détails d'un avis, y compris le nom d'utilisateur du critique,
+ * sa photo de profil, le commentaire qu'il a laissé, et la note qu'il a donnée.
  */
+
 public class Review {
 
-    /** The name of the user who left the review. */
+    /** Le nom de l'utilisateur qui a laissé l'avis. */
     private String username;
 
-    /** The profile picture of the user who left the review. */
+    /** La photo de profil de l'utilisateur qui a laissé l'avis. */
     private String picture;
 
-    /** The comment or feedback given by the user. */
+    /** Le commentaire ou retour d'information donné par l'utilisateur. */
     private String comment;
 
-    /** The rating provided by the user. Typically out of 5 or 10. */
+    /** La note fournie par l'utilisateur. Généralement sur 5 ou 10. */
     private int rate;
 
     /**
-     * Constructs a new Review instance.
+     * Construit une nouvelle instance de Review.
      *
-     * @param username the name of the user leaving the review
-     * @param picture  the profile picture URL or path of the user
-     * @param comment  the feedback or comment from the user
-     * @param rate     the rating given by the user
+     * @param username le nom de l'utilisateur qui laisse l'avis
+     * @param picture  l'URL ou le chemin de la photo de profil de l'utilisateur
+     * @param comment  le retour ou le commentaire de l'utilisateur
+     * @param rate     la note donnée par l'utilisateur
      */
     public Review(String username, String picture, String comment, int rate) {
         this.username = username;
@@ -38,18 +39,18 @@ public class Review {
     }
 
     /**
-     * Returns the username of the reviewer.
+     * Retourne le nom d'utilisateur du critique.
      *
-     * @return a String representing the username
+     * @return une chaîne de caractères représentant le nom d'utilisateur
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * Sets or updates the username of the reviewer.
+     * Définit ou met à jour le nom d'utilisateur du critique.
      *
-     * @param username the new username to be set
+     * @param username le nouveau nom d'utilisateur à définir
      */
     public void setUsername(String username) {
         this.username = username;
