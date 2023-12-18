@@ -46,7 +46,6 @@ public class RestaurantRepository {
      * pour récupérer les données du restaurant. Notez que la gestion des erreurs et toute transformation des données
      * devront être gérées.
      *
-     *
      * @return LiveData contenant les détails du restaurant.
      */
 
