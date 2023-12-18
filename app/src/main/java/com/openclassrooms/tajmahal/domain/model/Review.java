@@ -5,8 +5,8 @@ import java.util.Objects;
 
 /**
  * Représente un avis d'utilisateur.
- * Cette classe encapsule tous les détails d'un avis, y compris le nom d'utilisateur du critique,
- * sa photo de profil, le commentaire qu'il a laissé, et la note qu'il a donnée.
+ * Cette classe encapsule tous les détails d'un avis, y compris le nom d'utilisateur de la critique,
+ * sa photo de profil, le commentaire qu'il a laissé, et la note qu'il a donné.
  */
 
 public class Review {
@@ -39,7 +39,7 @@ public class Review {
     }
 
     /**
-     * Retourne le nom d'utilisateur du critique.
+     * Retourne le nom d'utilisateur de la critique.
      *
      * @return une chaîne de caractères représentant le nom d'utilisateur
      */
