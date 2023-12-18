@@ -13,10 +13,8 @@ import javax.inject.Singleton;
 /**
  * Ceci est la classe de répertoire pour la gestion des données de restaurant. Les répertoires sont responsables
  * de la coordination des opérations de données provenant de sources de données telles que les API réseau, les bases de données, etc.
- *
  * Typiquement dans une application Android construite avec des composants d'architecture, le répertoire gérera
  * la logique pour décider s'il faut récupérer des données d'une source réseau ou utiliser des données d'un cache local.
- *
  *
  * @see Restaurant
  * @see RestaurantApi
@@ -41,7 +39,6 @@ public class RestaurantRepository {
 
     /**
      * Récupère les détails du restaurant.
-     *
      * Cette méthode effectuera un appel réseau en utilisant l'instance {@link RestaurantApi} fournie
      * pour récupérer les données du restaurant. Notez que la gestion des erreurs et toute transformation des données
      * devront être gérées.
