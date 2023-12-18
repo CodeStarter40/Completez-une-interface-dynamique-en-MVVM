@@ -48,7 +48,7 @@ public class Review {
     }
 
     /**
-     * Définit ou met à jour le nom d'utilisateur du critique.
+     * Définit ou met à jour le nom d'utilisateur de la critique.
      *
      * @param username le nouveau nom d'utilisateur à définir
      */
