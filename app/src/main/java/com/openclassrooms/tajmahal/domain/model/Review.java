@@ -48,7 +48,7 @@ public class Review {
     }
 
     /**
-     * Définit ou met à jour le nom d'utilisateur de la critique.
+     * Défini ou met à jour le nom d'utilisateur de la critique.
      *
      * @param username le nouveau nom d'utilisateur à définir
      */
@@ -65,7 +65,7 @@ public class Review {
     }
 
     /**
-     * Définit ou met à jour la photo de profil du critique.
+     * Défini ou met à jour la photo de profil du critique.
      *
      * @param picture la nouvelle URL ou le chemin de la photo de profil à définir
      */
@@ -83,7 +83,7 @@ public class Review {
     }
 
     /**
-     * Définit ou met à jour le commentaire laissé par le critique.
+     * Défini ou met à jour le commentaire laissé par le critique.
      *
      * @param comment le nouveau commentaire ou retour à définir
      */

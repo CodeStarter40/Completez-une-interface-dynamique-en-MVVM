@@ -5,25 +5,25 @@ import android.app.Application;
 import dagger.hilt.android.HiltAndroidApp;
 
 /**
- * The main application class for the TajMahal project.
+ * La classe principale de l'application pour le projet TajMahal.
  * <p>
- * This class is annotated with {@code @HiltAndroidApp}, marking it as the entry point
- * for Dagger-Hilt dependency injection. By extending the {@code Application} class
- * and annotating it with {@code @HiltAndroidApp}, Hilt will automatically generate
- * and initialize the necessary DI components and modules required for the application.
+ * Cette classe est annotée avec {@code @HiltAndroidApp}, la marquant comme le point d'entrée
+ * pour l'injection de dépendances Dagger-Hilt. En étendant la classe {@code Application}
+ * et en la annotant avec {@code @HiltAndroidApp}, Hilt générera et initialisera automatiquement
+ * les composants et modules DI nécessaires pour l'application.
  * </p>
  * <p>
- * Developers should be cautious when adding logic to this class, as it affects the
- * entire lifecycle of the application. Generally, this class should only be used for
- * app-wide configurations and initializations.
+ * Les développeurs doivent être prudents lorsqu'ils ajoutent de la logique à cette classe, car cela affecte
+ * l'ensemble du cycle de vie de l'application. Généralement, cette classe devrait uniquement être utilisée pour
+ * les configurations et initialisations à l'échelle de l'application.
  * </p>
  *
- * <strong>Note for beginners:</strong> Hilt is a dependency injection library for Android
- * that reduces the boilerplate code to do manual dependency injection in your project.
- * Dependency injection allows objects to receive other objects (dependencies)
- * that they need from an external source rather than creating them internally.
+ * <strong>Note pour les débutants :</strong> Hilt est une bibliothèque d'injection de dépendances pour Android
+ * qui réduit le code standard nécessaire pour faire une injection de dépendances manuelle dans votre projet.
+ * L'injection de dépendances permet aux objets de recevoir d'autres objets (dépendances)
+ * dont ils ont besoin d'une source externe plutôt que de les créer en interne.
  *
- * @see <a href="https://developer.android.com/training/dependency-injection/hilt-android">Hilt's official documentation</a>
+ * @see <a href="https://developer.android.com/training/dependency-injection/hilt-android">La documentation officielle de Hilt</a>
  */
 @HiltAndroidApp
 public class TajMahalApplication extends Application {

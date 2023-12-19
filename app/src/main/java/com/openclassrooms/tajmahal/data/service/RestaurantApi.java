@@ -39,7 +39,6 @@ public interface RestaurantApi {
      *
      * @return L'objet {@link Restaurant} contenant tous les détails du restaurant.
      */
-
     Restaurant getRestaurant();
 
     /**
