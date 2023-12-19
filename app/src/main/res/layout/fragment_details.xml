@@ -34,6 +34,7 @@
             tools:text="Taj Mahal" />
 
         <RatingBar
+            android:id="@+id/ratingBar"
             android:layout_width="240dp"
             android:layout_height="46dp"
             android:isIndicator="true"
@@ -41,6 +42,7 @@
             android:rating="4"
             android:scaleX="0.4"
             android:scaleY="0.4"
+            android:progressTint="@color/yellow"
             app:layout_constraintBottom_toBottomOf="@+id/separator"
             app:layout_constraintEnd_toEndOf="@+id/tvRestaurantName"
             app:layout_constraintStart_toStartOf="@+id/tvRestaurantName"
