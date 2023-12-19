@@ -23,12 +23,12 @@ import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import dagger.hilt.android.AndroidEntryPoint;
 
 /**
- * DetailsFragment is the entry point of the application and serves as the primary UI.
- * It displays details about a restaurant and provides functionality to open its location
- * in a map, call its phone number, or view its website.
+ * DetailsFragment est le point d'entrée de l'application et sert d'interface utilisateur principale.
+ * Il affiche des détails sur un restaurant et offre des fonctionnalités pour ouvrir son emplacement
+ * sur une carte, appeler son numéro de téléphone, ou consulter son site web.
  * <p>
- * This class uses {@link FragmentDetailsBinding} for data binding to its layout and
- * {@link DetailsViewModel} to interact with data sources and manage UI-related data.
+ * Cette classe utilise {@link FragmentDetailsBinding} pour la liaison de données avec sa mise en page et
+ * {@link DetailsViewModel} pour interagir avec les sources de données et gérer les données liées à l'interface utilisateur.
  */
 @AndroidEntryPoint
 public class DetailsFragment extends Fragment {
@@ -38,11 +38,11 @@ public class DetailsFragment extends Fragment {
     private DetailsViewModel detailsViewModel;
 
     /**
-     * This method is called when the fragment is first created.
-     * It's used to perform one-time initialization.
+     * Cette méthode est appelée lorsque le fragment est créé pour la première fois.
+     * Elle est utilisée pour effectuer une initialisation unique.
      *
-     * @param savedInstanceState A bundle containing previously saved instance state.
-     * If the fragment is being re-created from a previous saved state, this is the state.
+     * @param savedInstanceState Un bundle contenant l'état de l'instance précédemment sauvegardé.
+     * Si le fragment est recréé à partir d'un état sauvegardé précédent, c'est cet état.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,12 +50,12 @@ public class DetailsFragment extends Fragment {
     }
 
     /**
-     * This method is called immediately after `onCreateView()`.
-     * Use this method to perform final initialization once the fragment views have been inflated.
+     * Cette méthode est appelée immédiatement après `onCreateView()`.
+     * Utilisez cette méthode pour effectuer l'initialisation finale une fois que les vues du fragment ont été gonflées.
      *
-     * @param view The View returned by `onCreateView()`.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
+     * @param view La Vue retournée par `onCreateView()`.
+     * @param savedInstanceState Si non nul, ce fragment est en train d'être reconstruit
+     * à partir d'un état sauvegardé précédent comme indiqué ici.
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -66,14 +66,14 @@ public class DetailsFragment extends Fragment {
     }
 
     /**
-     * Creates and returns the view hierarchy associated with the fragment.
+     * Crée et retourne la hiérarchie de vue associée au fragment.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
-     * The fragment should not add the view itself but return it.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
-     * @return Returns the View for the fragment's UI, or null.
+     * @param inflater L'objet LayoutInflater qui peut être utilisé pour gonfler toutes les vues dans le fragment.
+     * @param container Si non nul, c'est la vue parente à laquelle l'interface utilisateur du fragment doit être attachée.
+     * Le fragment ne doit pas ajouter la vue lui-même mais la retourner.
+     * @param savedInstanceState Si non nul, ce fragment est en train d'être reconstruit
+     * à partir d'un état sauvegardé précédent comme indiqué ici.
+     * @return Retourne la Vue pour l'interface utilisateur du fragment, ou null.
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ public class DetailsFragment extends Fragment {
 
 
     /**
-     * Sets up the UI-specific properties, such as system UI flags and status bar color.
+     * Configure les propriétés spécifiques à l'interface utilisateur, telles que les drapeaux de l'interface système et la couleur de la barre d'état.
      */
     private void setupUI() {
         Window window = requireActivity().getWindow();
@@ -94,16 +94,16 @@ public class DetailsFragment extends Fragment {
     }
 
     /**
-     * Initializes the ViewModel for this activity.
+     * Initialise le ViewModel pour cette activité.
      */
     private void setupViewModel() {
         detailsViewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
     }
 
     /**
-     * Updates the UI components with the provided restaurant data.
+     * Met à jour les composants de l'interface utilisateur avec les données du restaurant fournies.
      *
-     * @param restaurant The restaurant object containing details to be displayed.
+     * @param restaurant L'objet restaurant contenant les détails à afficher.
      */
     private void updateUIWithRestaurant(Restaurant restaurant) {
         if (restaurant == null) return;
@@ -124,10 +124,10 @@ public class DetailsFragment extends Fragment {
     }
 
     /**
-     * Opens the provided address in Google Maps or shows an error if Google Maps
-     * is not installed.
+     * Ouvre l'adresse fournie dans Google Maps ou affiche une erreur si Google Maps
+     * n'est pas installé.
      *
-     * @param address The address to be shown in Google Maps.
+     * @param address L'adresse à afficher dans Google Maps.
      */
     private void openMap(String address) {
         Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
@@ -141,10 +141,10 @@ public class DetailsFragment extends Fragment {
     }
 
     /**
-     * Dials the provided phone number or shows an error if there's no dialing application
-     * installed.
+     * Compose le numéro de téléphone fourni ou affiche une erreur s'il n'y a pas d'application de composition
+     * installée.
      *
-     * @param phoneNumber The phone number to be dialed.
+     * @param phoneNumber Le numéro de téléphone à composer.
      */
     private void dialPhoneNumber(String phoneNumber) {
         Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -157,10 +157,10 @@ public class DetailsFragment extends Fragment {
     }
 
     /**
-     * Opens the provided website URL in a browser or shows an error if there's no
-     * browser installed.
+     * Ouvre l'URL du site web fourni dans un navigateur ou affiche une erreur s'il n'y a pas de
+     * navigateur installé.
      *
-     * @param websiteUrl The URL of the website to be opened.
+     * @param websiteUrl L'URL du site web à ouvrir.
      */
     private void openBrowser(String websiteUrl) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));

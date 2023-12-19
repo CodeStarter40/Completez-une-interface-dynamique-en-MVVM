@@ -16,11 +16,11 @@ import java.util.Calendar;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 /**
- * MainViewModel is responsible for preparing and managing the data for the {@link DetailsFragment}.
- * It communicates with the {@link RestaurantRepository} to fetch restaurant details and provides
- * utility methods related to the restaurant UI.
+ * MainViewModel est responsable de la préparation et de la gestion des données pour le {@link DetailsFragment}.
+ * Il communique avec le {@link RestaurantRepository} pour récupérer les détails des restaurants et fournit
+ * des méthodes utilitaires liées à l'interface utilisateur du restaurant.
  *
- * This ViewModel is integrated with Hilt for dependency injection.
+ * Ce ViewModel est intégré avec Hilt pour l'injection de dépendances.
  */
 @HiltViewModel
 public class DetailsViewModel extends ViewModel {
@@ -28,9 +28,9 @@ public class DetailsViewModel extends ViewModel {
     private final RestaurantRepository restaurantRepository;
 
     /**
-     * Constructor that Hilt will use to create an instance of MainViewModel.
+     * Constructeur que Hilt utilisera pour créer une instance de MainViewModel.
      *
-     * @param restaurantRepository The repository which will provide restaurant data.
+     * @param restaurantRepository Le répertoire qui fournira les données des restaurants.
      */
     @Inject
     public DetailsViewModel(RestaurantRepository restaurantRepository) {
@@ -38,18 +38,18 @@ public class DetailsViewModel extends ViewModel {
     }
 
     /**
-     * Fetches the details of the Taj Mahal restaurant.
+     * Récupère les détails du restaurant Taj Mahal.
      *
-     * @return LiveData object containing the details of the Taj Mahal restaurant.
+     * @return Un objet LiveData contenant les détails du restaurant Taj Mahal.
      */
     public LiveData<Restaurant> getTajMahalRestaurant() {
         return restaurantRepository.getRestaurant();
     }
 
     /**
-     * Retrieves the current day of the week in French.
+     * Récupère le jour actuel de la semaine en français.
      *
-     * @return A string representing the current day of the week in French.
+     * @return Une chaîne représentant le jour actuel de la semaine en français.
      */
     public String getCurrentDay(Context context) {
         Calendar calendar = Calendar.getInstance();
