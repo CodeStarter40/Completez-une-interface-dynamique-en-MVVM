@@ -33,6 +33,19 @@
             app:layout_constraintTop_toBottomOf="@id/tvRestaurantType"
             tools:text="Taj Mahal" />
 
+        <RatingBar
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="4"
+            android:scaleX="0.4"
+            android:scaleY="0.4"
+            app:layout_constraintBottom_toBottomOf="@+id/separator"
+            app:layout_constraintEnd_toEndOf="@+id/tvRestaurantName"
+            app:layout_constraintStart_toStartOf="@+id/tvRestaurantName"
+            app:layout_constraintTop_toBottomOf="@+id/tvRestaurantName" />
+
         <TextView
             android:id="@+id/tvRestaurantType"
             android:layout_width="0dp"
