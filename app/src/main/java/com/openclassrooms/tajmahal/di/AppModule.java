@@ -11,21 +11,23 @@ import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
 
 /**
- * AppModule is responsible for providing application-level dependencies
- * for the entire app. This module is installed in the SingletonComponent
- * ensuring that the provided instances are retained throughout the app's lifecycle.
+ * AppModule est responsable de fournir des dépendances au niveau de l'application
+ * pour l'ensemble de l'application. Ce module est installé dans le SingletonComponent
+ * assurant que les instances fournies sont conservées tout au long du cycle de vie de l'application.
  */
+
 @Module
 @InstallIn(SingletonComponent.class)
 public class AppModule {
 
     /**
-     * Provides a singleton instance of the RestaurantApi. In this example,
-     * a fake implementation of the API is being used, which can be helpful
-     * during testing or mock scenarios.
+     * Fournit une instance singleton de RestaurantApi. Dans cet exemple,
+     * une fausse implémentation de l'API est utilisée, ce qui peut être utile
+     * lors des tests ou dans des scénarios de simulation.
      *
-     * @return A singleton instance of the RestaurantFakeApi.
+     * @return Une instance singleton de RestaurantFakeApi.
      */
+
     @Provides
     @Singleton
     public RestaurantApi provideRestaurantApi() {

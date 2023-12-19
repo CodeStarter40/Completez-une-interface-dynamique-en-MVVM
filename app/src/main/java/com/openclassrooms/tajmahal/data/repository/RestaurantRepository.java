@@ -11,16 +11,15 @@ import javax.inject.Singleton;
 
 
 /**
- * This is the repository class for managing restaurant data. Repositories are responsible
- * for coordinating data operations from data sources such as network APIs, databases, etc.
- *
- * Typically in an Android app built with architecture components, the repository will handle
- * the logic for deciding whether to fetch data from a network source or use data from a local cache.
- *
+ * Ceci est la classe de répertoire pour la gestion des données de restaurant. Les répertoires sont responsables
+ * de la coordination des opérations de données provenant de sources de données telles que les API réseau, les bases de données, etc.
+ * Typiquement dans une application Android construite avec des composants d'architecture, le répertoire gérera
+ * la logique pour décider s'il faut récupérer des données d'une source réseau ou utiliser des données d'un cache local.
  *
  * @see Restaurant
  * @see RestaurantApi
  */
+
 @Singleton
 public class RestaurantRepository {
 
@@ -28,25 +27,25 @@ public class RestaurantRepository {
     private final RestaurantApi restaurantApi;
 
     /**
-     * Constructs a new instance of {@link RestaurantRepository} with the given {@link RestaurantApi}.
+     * Construit une nouvelle instance de {@link RestaurantRepository} avec la {@link RestaurantApi} donnée.
      *
-     * @param restaurantApi The network API interface for fetching restaurant data.
+     * @param restaurantApi L'interface API réseau pour la récupération des données de restaurant.
      */
+
     @Inject
     public RestaurantRepository(RestaurantApi restaurantApi) {
         this.restaurantApi = restaurantApi;
     }
 
     /**
-     * Fetches the restaurant details.
+     * Récupère les détails du restaurant.
+     * Cette méthode effectuera un appel réseau en utilisant l'instance {@link RestaurantApi} fournie
+     * pour récupérer les données du restaurant. Notez que la gestion des erreurs et toute transformation des données
+     * devront être gérées.
      *
-     * This method will make a network call using the provided {@link RestaurantApi} instance
-     * to fetch restaurant data. Note that error handling and any transformations on the data
-     * would need to be managed.
-     *
-     *
-     * @return LiveData holding the restaurant details.
+     * @return LiveData contenant les détails du restaurant.
      */
+
     public LiveData<Restaurant> getRestaurant() {
         return new MutableLiveData<>(restaurantApi.getRestaurant());
     }

@@ -4,21 +4,22 @@ package com.openclassrooms.tajmahal.domain.model;
 import java.util.Objects;
 
 /**
- * Represents a restaurant and its various attributes.
+ * Représente un restaurant et ses divers attributs.
  * <p>
- * This class models a restaurant with its name, type (e.g., Indian, Italian), operational hours,
- * address, website, phone number, and availability of dine-in and take-away options.
+ * Cette classe modélise un restaurant avec son nom, son type (par exemple, indien, italien), ses heures d'ouverture,
+ * adresse, site web, numéro de téléphone, et la disponibilité des options de restauration sur place et à emporter.
  * </p>
  * <p>
- * For beginners: A class is a blueprint for creating objects in Java. Objects are instances of a class.
- * In this case, the class 'Restaurant' allows us to represent different restaurants with their specific details.
+ * Pour les débutants : Une classe est un plan pour créer des objets en Java. Les objets sont des instances d'une classe.
+ * Dans ce cas, la classe 'Restaurant' nous permet de représenter différents restaurants avec leurs détails spécifiques.
  * <p>
- * Example:
+ * Exemple :
  * <pre>
- * Restaurant tajMahal = new Restaurant("Taj Mahal", "Indian", "11h30 - 22h00",
- *                                      "123 Street", "http://tajmahal.com", "1234567890", true, false);
+ * Restaurant tajMahal = new Restaurant("Taj Mahal", "Indien", "11h30 - 22h00",
+ *                                      "123 Street", "http://tajmahal.com", "1234567890", vrai, faux);
  * </pre>
  */
+
 public class Restaurant {
 
     // Member variables representing attributes of a restaurant.
@@ -32,17 +33,18 @@ public class Restaurant {
     private boolean takeAway;
 
     /**
-     * Constructor for the Restaurant class.
+     * Constructeur pour la classe Restaurant.
      *
-     * @param name        The name of the restaurant.
-     * @param type        The type or cuisine of the restaurant (e.g., Indian, Italian).
-     * @param hours       The operational hours of the restaurant.
-     * @param address     The address of the restaurant.
-     * @param website     The website URL of the restaurant.
-     * @param phoneNumber The contact phone number of the restaurant.
-     * @param dineIn      A boolean indicating if dine-in is available.
-     * @param takeAway    A boolean indicating if take-away service is available.
+     * @param name        Le nom du restaurant.
+     * @param type        Le type ou la cuisine du restaurant (par exemple, indien, italien).
+     * @param hours       Les heures d'ouverture du restaurant.
+     * @param address     L'adresse du restaurant.
+     * @param website     L'URL du site web du restaurant.
+     * @param phoneNumber Le numéro de téléphone de contact du restaurant.
+     * @param dineIn      Un booléen indiquant si la restauration sur place est disponible.
+     * @param takeAway    Un booléen indiquant si le service à emporter est disponible.
      */
+
     public Restaurant(String name, String type, String hours, String address, String website, String phoneNumber, boolean dineIn, boolean takeAway) {
         this.name = name;
         this.type = type;
