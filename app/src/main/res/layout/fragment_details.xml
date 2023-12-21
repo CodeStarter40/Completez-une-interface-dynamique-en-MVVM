@@ -33,6 +33,22 @@
             app:layout_constraintTop_toBottomOf="@id/tvRestaurantType"
             tools:text="Taj Mahal" />
 
+        <TextView
+            android:id="@+id/numberRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
+            android:text="4.0"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/ratingBar"
+            app:layout_constraintEnd_toEndOf="@+id/tvRestaurantName"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="@+id/tvRestaurantName"
+            app:layout_constraintTop_toBottomOf="@+id/tvRestaurantName"
+            app:layout_constraintVertical_bias="0.375" />
+
         <RatingBar
             android:id="@+id/ratingBar"
             android:layout_width="240dp"
@@ -43,10 +59,10 @@
             android:rating="4"
             android:scaleX="0.4"
             android:scaleY="0.4"
-            app:layout_constraintBottom_toTopOf="@+id/separator"
-            app:layout_constraintEnd_toEndOf="@+id/tvRestaurantName"
-            app:layout_constraintStart_toStartOf="@+id/tvRestaurantName"
-            app:layout_constraintTop_toBottomOf="@+id/tvRestaurantName" />
+            app:layout_constraintEnd_toEndOf="@+id/numberRating"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toStartOf="@+id/numberRating"
+            app:layout_constraintTop_toBottomOf="@+id/numberRating" />
 
         <TextView
             android:id="@+id/tvRestaurantType"
@@ -102,15 +118,18 @@
 
         <View
             android:id="@+id/separator"
-            android:layout_width="0dp"
+            android:layout_width="371dp"
             android:layout_height="0.75dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="#DADADA"
-            app:layout_constraintBottom_toTopOf="@+id/tvRestaurantHours"
+            app:layout_constraintBottom_toTopOf="@+id/tvRestaurantDay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRestaurantName" />
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
         <ImageView
             android:id="@+id/icon_hours"
