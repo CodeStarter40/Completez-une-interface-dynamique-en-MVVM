@@ -38,9 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="16dp"
             android:text="4.0"
-            android:textColor="@color/black"
+            android:textColor="@color/taupe"
             android:textSize="24dp"
             app:layout_constraintBottom_toTopOf="@+id/ratingBar"
             app:layout_constraintEnd_toEndOf="@+id/tvRestaurantName"
@@ -64,6 +63,76 @@
             app:layout_constraintStart_toStartOf="@+id/numberRating"
             app:layout_constraintTop_toBottomOf="@+id/numberRating" />
 
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="36dp"
+            android:max="100"
+            android:progress="80"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar5" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="40dp"
+            android:max="100"
+            android:progress="40"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar4" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="40dp"
+            android:max="100"
+            android:maxHeight="16dip"
+            android:progress="30"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar4" />
+
+        <ProgressBar
+            android:id="@+id/progressBar4"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="40dp"
+            android:max="100"
+            android:progress="60"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+        <ProgressBar
+            android:id="@+id/progressBar5"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="40dp"
+            android:max="100"
+            android:progress="60"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+
         <TextView
             android:id="@+id/tvRestaurantType"
             android:layout_width="0dp"
@@ -78,6 +147,7 @@
             tools:text="Restaurant Indien" />
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -159,12 +229,16 @@
             android:id="@+id/tvRestaurantHours"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="138dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="11dp"
             android:fontFamily="@font/jakarta_semibold"
             android:textColor="#666"
             android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonAdress"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvRestaurantDay"
             app:layout_constraintTop_toBottomOf="@+id/separator"
             tools:text="11h30 - 14h30・18h30 - 22h00" />
 
