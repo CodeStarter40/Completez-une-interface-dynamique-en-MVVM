@@ -64,6 +64,19 @@
             app:layout_constraintTop_toBottomOf="@+id/numberRating" />
 
 
+        <TextView
+            android:id="@+id/numberTotalRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="( 245 )"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:layout_constraintEnd_toEndOf="@+id/numberRating"
+            app:layout_constraintHorizontal_bias="0.695"
+            app:layout_constraintStart_toStartOf="@+id/numberRating"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            app:layout_constraintVertical_bias="0.0" />
+
         <ProgressBar
             android:id="@+id/progressBar1"
             style="?android:attr/progressBarStyleHorizontal"
@@ -99,7 +112,7 @@
             android:layout_marginEnd="25dp"
             android:max="100"
             android:maxHeight="16dip"
-            android:progress="30"
+            android:progress="90"
             android:progressTint="@color/yellow"
             app:layout_constraintBottom_toTopOf="@+id/progressBar2"
             app:layout_constraintEnd_toEndOf="parent"
