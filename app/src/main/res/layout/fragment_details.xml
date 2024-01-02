@@ -68,8 +68,8 @@
             android:id="@+id/numberTotalRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="( 245 )"
+            android:layout_marginBottom="15dp"
+            android:text="(245)"
             app:layout_constraintBottom_toTopOf="@+id/separator"
             app:layout_constraintEnd_toEndOf="@+id/numberRating"
             app:layout_constraintHorizontal_bias="0.695"
@@ -369,6 +369,24 @@
             app:layout_constraintBottom_toBottomOf="@id/tvRestaurantPhoneNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvRestaurantPhoneNumber" />
+
+        <Button
+            android:id="@+id/buttonletrating"
+            android:layout_width="158dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:text="Laisser un avis"
+            android:textColor="@color/taupe"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/numberTotalRating"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar1"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
