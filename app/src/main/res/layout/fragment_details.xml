@@ -34,6 +34,118 @@
             tools:text="Taj Mahal" />
 
         <TextView
+            android:id="@+id/numberRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/grey"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/ratingBar"
+            app:layout_constraintEnd_toEndOf="@+id/tvRestaurantName"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="@+id/tvRestaurantName"
+            app:layout_constraintTop_toBottomOf="@+id/tvRestaurantName"
+            app:layout_constraintVertical_bias="0.375" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressTint="@color/yellow"
+            android:rating="4"
+            android:scaleX="0.4"
+            android:scaleY="0.4"
+            app:layout_constraintEnd_toEndOf="@+id/numberRating"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toStartOf="@+id/numberRating"
+            app:layout_constraintTop_toBottomOf="@+id/numberRating" />
+
+
+        <TextView
+            android:id="@+id/numberTotalRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="(245)"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:layout_constraintEnd_toEndOf="@+id/numberRating"
+            app:layout_constraintHorizontal_bias="0.695"
+            app:layout_constraintStart_toStartOf="@+id/numberRating"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="36dp"
+            android:max="100"
+            android:progress="80"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar5" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="25dp"
+            android:max="100"
+            android:progress="40"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar4" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="25dp"
+            android:max="100"
+            android:maxHeight="16dip"
+            android:progress="90"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar4" />
+
+        <ProgressBar
+            android:id="@+id/progressBar4"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="25dp"
+            android:max="100"
+            android:progress="60"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+        <ProgressBar
+            android:id="@+id/progressBar5"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="25dp"
+            android:max="100"
+            android:progress="60"
+            android:progressTint="@color/yellow"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+
+        <TextView
             android:id="@+id/tvRestaurantType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -47,6 +159,7 @@
             tools:text="Restaurant Indien" />
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -87,16 +200,18 @@
 
         <View
             android:id="@+id/separator"
-            android:layout_width="0dp"
+            android:layout_width="371dp"
             android:layout_height="0.75dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="#DADADA"
-            app:layout_constraintBottom_toTopOf="@+id/tvRestaurantHours"
+            app:layout_constraintBottom_toTopOf="@+id/tvRestaurantDay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRestaurantName" />
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
         <ImageView
             android:id="@+id/icon_hours"
@@ -126,12 +241,16 @@
             android:id="@+id/tvRestaurantHours"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="138dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="11dp"
             android:fontFamily="@font/jakarta_semibold"
             android:textColor="#666"
             android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonAdress"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvRestaurantDay"
             app:layout_constraintTop_toBottomOf="@+id/separator"
             tools:text="11h30 - 14h30・18h30 - 22h00" />
 
@@ -249,6 +368,24 @@
             app:layout_constraintBottom_toBottomOf="@id/tvRestaurantPhoneNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvRestaurantPhoneNumber" />
+
+        <Button
+            android:id="@+id/buttonLetRating"
+            android:layout_width="158dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:text="Laisser un avis"
+            android:textColor="@color/grey"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/numberTotalRating"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar1"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
