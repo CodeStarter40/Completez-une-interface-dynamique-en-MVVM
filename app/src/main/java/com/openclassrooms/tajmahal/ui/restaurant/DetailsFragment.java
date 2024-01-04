@@ -67,46 +67,38 @@ public class DetailsFragment extends Fragment {
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
 
-        //add stack code pour calcul l'average total review pour @id numberRating sur layout xml 
+
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
-            if (reviews != null && !reviews.isEmpty()) { // Verification qe la liste n'est pas null et pas vide. (avant process)
-                float sum = 0; //init var "sum" de type float à 0 avant cumul de la somme totale des avis
-                for (Review review : reviews) { //boucle for-each qui parcours chaque avis dans la liste reviews
-                    sum += review.getRate(); // Utilise getRate() pour obtenir la note de chaque avis et fait un add sur la var "sum"
+            if (reviews != null && !reviews.isEmpty()) {
+                float sum = 0;
+
+                int[] noteCount = new int[5]; // Pour les notes de 1 à 5
+                for (Review review : reviews) {
+
+                    //calcul de la somme pour la moyenne
+                    sum += review.getRate();
+
+                    //incrémentation pour les compteurs de notes
+                    if (review.getRate() >= 1 && review.getRate() <= 5) {
+                        noteCount[review.getRate() - 1]++;
+                    }
                 }
-                float average = sum / reviews.size();// calcul moyenne "float" si chiffre a virgule "Sum" divisé par le nombre de reviews
-                //binding vers l'id numberRating
-                binding.numberRating.setText(String.format("%.1f", average)); //affiche la moyenne calculée sur l'id numberRating / "%.1f" formatage 3.456 to 3.5 plus propre pour l'interface user
-                binding.ratingBar.setRating(average); // modifie le nombre d'etoile en fonction du nombre obtenu par l'average des notes critiques
+                //count et affichage de la moyenne
+                float average = sum / reviews.size();
+                binding.numberRating.setText(String.format("%.1f", average));
+                binding.ratingBar.setRating(average);
+
+                //Maj des ProgressBar
+                updateProgressBars(noteCount, reviews.size());
+
+                //Maj du nombre total de reviews
+                binding.numberTotalRating.setText("(" + reviews.size() + ")");
+                binding.numberTotalRating.setVisibility(View.VISIBLE);
             } else {
-                binding.numberRating.setText("ERREUR"); //si fail affiche erreur ( petite fantaisie )
-            }
-        });
-
-        //Count pour progressbar
-        detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
-            int[] noteCount = new int[5]; // Pour les notes de 1 à 5 creation tableau d'entier
-
-            for (Review review : reviews) { //parcours de la liste des avis
-                if (review.getRate() >= 1 && review.getRate() <= 5) {  //vérifie si la note est comprise entre 1 et 5
-                    noteCount[review.getRate() - 1]++; //incrementation note correspondante
-                }
-            }
-
-            // Mise à jour des progressbar
-            updateProgressBars(noteCount, reviews.size());
-        });
-
-        //count pour le nombre total de review pour l'@+id/numberTotalRating
-        detailsViewModel.getReviews().observe(getViewLifecycleOwner(),reviews -> {
-            if (reviews !=null) {
-                //obtenir le nombre total de review dans une variable int
-                int totalReviewCount = reviews.size();
-                //mise à jour du textsize dans le layout xml
-                binding.numberTotalRating.setText("(" + totalReviewCount + ")");
-                binding.numberTotalRating.setVisibility(View.VISIBLE); //rend le text visible si count ok
-            } else {
-                binding.numberTotalRating.setVisibility(View.GONE); //cache le nombre de critique si 0
+                //gestion du cas où il n'y a pas de reviews
+                binding.numberRating.setText("ERREUR");
+                binding.ratingBar.setRating(0);
+                binding.numberTotalRating.setVisibility(View.GONE);
             }
         });
     }
