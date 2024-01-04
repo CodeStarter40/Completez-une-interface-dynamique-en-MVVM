@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.openclassrooms.tajmahal.data.service.RestaurantApi;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -48,6 +51,18 @@ public class RestaurantRepository {
 
     public LiveData<Restaurant> getRestaurant() {
         return new MutableLiveData<>(restaurantApi.getRestaurant());
+    }
+
+    /** méthode pour recuperer les reviews
+     *
+     * @return Livedata contenant les détails de la liste des reviews.
+     */
+
+    //add methode pour aller chercher la liste des avis dans restaurant fake API
+    public LiveData<List<Review>> getReviews() {
+        MutableLiveData<List<Review>> liveDataReviews = new MutableLiveData<>();
+        liveDataReviews.setValue(restaurantApi.getReviews());
+        return liveDataReviews;
     }
 
 }
