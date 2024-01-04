@@ -54,7 +54,6 @@
             android:isIndicator="true"
             android:numStars="5"
             android:progressTint="@color/yellow"
-            android:rating="4"
             android:scaleX="0.4"
             android:scaleY="0.4"
             app:layout_constraintEnd_toEndOf="@+id/numberRating"

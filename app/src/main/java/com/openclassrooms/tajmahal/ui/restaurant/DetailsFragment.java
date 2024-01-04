@@ -69,16 +69,17 @@ public class DetailsFragment extends Fragment {
 
         //add stack code pour calcul l'average total review pour @id numberRating sur layout xml 
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
-            if (reviews != null && !reviews.isEmpty()) {
-                float sum = 0;
-                for (Review review : reviews) {
-                    sum += review.getRate(); // Utilise getRate() pour obtenir la note de chaque avis
+            if (reviews != null && !reviews.isEmpty()) { // Verification qe la liste n'est pas null et pas vide. (avant process)
+                float sum = 0; //init var "sum" de type float à 0 avant cumul de la somme totale des avis
+                for (Review review : reviews) { //boucle for-each qui parcours chaque avis dans la liste reviews
+                    sum += review.getRate(); // Utilise getRate() pour obtenir la note de chaque avis et fait un add sur la var "sum"
                 }
                 float average = sum / reviews.size();// calcul moyenne "float" si chiffre a virgule "Sum" divisé par le nombre de reviews
                 //binding vers l'id numberRating
-                binding.numberRating.setText(String.format("%.1f", average)); //affiche la moyenne calculée sur l'id numberRating
+                binding.numberRating.setText(String.format("%.1f", average)); //affiche la moyenne calculée sur l'id numberRating / "%.1f" formatage 3.456 to 3.5 plus propre pour l'interface user
+                binding.ratingBar.setRating(average); // modifie le nombre d'etoile en fonction du nombre obtenu par l'average des notes critiques
             } else {
-                binding.numberRating.setText("ERREUR"); //si fail affiche erreur
+                binding.numberRating.setText("ERREUR"); //si fail affiche erreur ( petite fantaisie )
             }
         });
 
@@ -98,11 +99,14 @@ public class DetailsFragment extends Fragment {
 
         //count pour le nombre total de review pour l'@+id/numberTotalRating
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(),reviews -> {
-            if (reviews !=null); {
+            if (reviews !=null) {
                 //obtenir le nombre total de review dans une variable int
                 int totalReviewCount = reviews.size();
                 //mise à jour du textsize dans le layout xml
                 binding.numberTotalRating.setText("(" + totalReviewCount + ")");
+                binding.numberTotalRating.setVisibility(View.VISIBLE); //rend le text visible si count ok
+            } else {
+                binding.numberTotalRating.setVisibility(View.GONE); //cache le nombre de critique si 0
             }
         });
     }
