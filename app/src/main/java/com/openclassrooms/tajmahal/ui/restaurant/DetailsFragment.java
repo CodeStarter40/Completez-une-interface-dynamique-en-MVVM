@@ -105,10 +105,10 @@ public class DetailsFragment extends Fragment {
             // 0 compte 1
             // binding des id
             binding.progressBar4.setProgress((noteCount[4] * 100) / totalReviews); // Pour les notes de 5
-            binding.progressBar2.setProgress((noteCount[3] * 100) / totalReviews); // Pour les notes de 4
-            binding.progressBar3.setProgress((noteCount[2] * 100) / totalReviews); // Pour les notes de 3
-            binding.progressBar1.setProgress((noteCount[1] * 100) / totalReviews); // Pour les notes de 2
-            binding.progressBar5.setProgress((noteCount[0] * 100) / totalReviews); // Pour les notes de 1
+            binding.progressBar3.setProgress((noteCount[3] * 100) / totalReviews); // Pour les notes de 4
+            binding.progressBar2.setProgress((noteCount[2] * 100) / totalReviews); // Pour les notes de 3
+            binding.progressBar5.setProgress((noteCount[1] * 100) / totalReviews); // Pour les notes de 2
+            binding.progressBar1.setProgress((noteCount[0] * 100) / totalReviews); // Pour les notes de 1
         }
 
     }
