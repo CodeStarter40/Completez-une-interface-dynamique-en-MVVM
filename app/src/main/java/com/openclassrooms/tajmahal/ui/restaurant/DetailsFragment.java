@@ -54,7 +54,7 @@ public class DetailsFragment extends Fragment {
 
     /**
      * Cette méthode est appelée immédiatement après `onCreateView()`.
-     * Utilisez cette méthode pour effectuer l'initialisation finale une fois que les vues du fragment ont été gonflées.
+     * Utilisez cette méthode pour effectuer l'initialisation finale une fois que les vues du fragment ont été inf.
      *
      * @param view La Vue retournée par `onCreateView()`.
      * @param savedInstanceState Si non nul, ce fragment est en train d'être reconstruit
