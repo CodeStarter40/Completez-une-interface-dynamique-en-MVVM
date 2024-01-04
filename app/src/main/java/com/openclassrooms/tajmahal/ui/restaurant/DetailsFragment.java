@@ -103,6 +103,9 @@ public class DetailsFragment extends Fragment {
                 int totalReviewCount = reviews.size();
                 //mise à jour du textsize dans le layout xml
                 binding.numberTotalRating.setText("(" + totalReviewCount + ")");
+                binding.numberTotalRating.setVisibility(View.VISIBLE); //rend le text visible si count ok
+            } else {
+                binding.numberTotalRating.setVisibility(View.GONE); //cache le nombre de critique si 0
             }
         });
     }
