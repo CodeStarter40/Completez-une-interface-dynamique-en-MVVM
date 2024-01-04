@@ -96,6 +96,10 @@ public class DetailsFragment extends Fragment {
             updateProgressBars(noteCount, reviews.size());
         });
 
+        //count pour le nombre total de review pour l'@+id/numberTotalRating
+        detailsViewModel.getReviews().observe(getViewLifecycleOwner(),reviews -> {
+
+        });
 
     }
 

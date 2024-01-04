@@ -64,5 +64,4 @@ public class RestaurantRepository {
         liveDataReviews.setValue(restaurantApi.getReviews());
         return liveDataReviews;
     }
-
 }
