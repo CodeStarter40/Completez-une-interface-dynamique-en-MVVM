@@ -98,9 +98,13 @@ public class DetailsFragment extends Fragment {
 
         //count pour le nombre total de review pour l'@+id/numberTotalRating
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(),reviews -> {
-
+            if (reviews !=null); {
+                //obtenir le nombre total de review dans une variable int
+                int totalReviewCount = reviews.size();
+                //mise à jour du textsize dans le layout xml
+                binding.numberTotalRating.setText("(" + totalReviewCount + ")");
+            }
         });
-
     }
 
     // declaration methode updateProgressBars
