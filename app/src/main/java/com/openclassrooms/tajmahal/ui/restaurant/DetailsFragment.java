@@ -77,6 +77,7 @@ public class DetailsFragment extends Fragment {
                 float average = sum / reviews.size();// calcul moyenne "float" si chiffre a virgule "Sum" divisé par le nombre de reviews
                 //binding vers l'id numberRating
                 binding.numberRating.setText(String.format("%.1f", average)); //affiche la moyenne calculée sur l'id numberRating
+                binding.ratingBar.setRating(average); // modifie le nombre d'etoile en fonction du nombre obtenu par l'average des notes critiques
             } else {
                 binding.numberRating.setText("ERREUR"); //si fail affiche erreur
             }
