@@ -21,7 +21,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
  * MainViewModel est responsable de la préparation et de la gestion des données pour le {@link DetailsFragment}.
  * Il communique avec le {@link RestaurantRepository} pour récupérer les détails des restaurants et fournit
  * des méthodes utilitaires liées à l'interface utilisateur du restaurant.
- *
  * Ce ViewModel est intégré avec Hilt pour l'injection de dépendances.
  */
 @HiltViewModel
