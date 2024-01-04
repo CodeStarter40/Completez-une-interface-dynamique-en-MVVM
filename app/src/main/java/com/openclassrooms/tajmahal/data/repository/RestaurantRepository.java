@@ -60,8 +60,8 @@ public class RestaurantRepository {
 
     //add methode pour aller chercher la liste des avis dans restaurant fake API
     public LiveData<List<Review>> getReviews() {
-        MutableLiveData<List<Review>> liveDataReviews = new MutableLiveData<>();
-        liveDataReviews.setValue(restaurantApi.getReviews());
-        return liveDataReviews;
+        MutableLiveData<List<Review>> liveDataReviews = new MutableLiveData<>(); //mutablelivedata sous classe de livedata permet de changer la valeur stockée dans le LiveData
+        liveDataReviews.setValue(restaurantApi.getReviews()); //met a jour les data de liveDataReviews / restaurantApi.getReviews() called pour recup la liste des avis
+        return liveDataReviews; //renvoi l'instance MutableLiveData en liveDataReviews permet à l'observateur de voir les données sans les modifier
     }
 }

@@ -44,8 +44,8 @@ public class DetailsViewModel extends ViewModel {
      *
      * @return Un objet LiveData contenant les détails de la liste sur methode dans restaurantRepository
      */
-    public LiveData<List<Review>> getReviews() {
-        return restaurantRepository.getReviews();
+    public LiveData<List<Review>> getReviews() { // methode pour acceder aux avis depuis l'exterieur du Vm
+        return restaurantRepository.getReviews(); //accès aux data depuis le Repo, get la liste des reviews
     }
 
     /**
