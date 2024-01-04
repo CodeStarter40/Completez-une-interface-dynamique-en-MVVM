@@ -8,10 +8,12 @@ import androidx.lifecycle.ViewModel;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.data.repository.RestaurantRepository;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
 
 import javax.inject.Inject;
 
 import java.util.Calendar;
+import java.util.List;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
@@ -35,6 +37,15 @@ public class DetailsViewModel extends ViewModel {
     @Inject
     public DetailsViewModel(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
+    }
+
+    /**
+     * Récupère les détails de la liste des reviews
+     *
+     * @return Un objet LiveData contenant les détails de la liste sur methode dans restaurantRepository
+     */
+    public LiveData<List<Review>> getReviews() {
+        return restaurantRepository.getReviews();
     }
 
     /**
