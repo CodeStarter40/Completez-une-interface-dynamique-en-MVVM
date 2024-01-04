@@ -85,10 +85,10 @@ public class DetailsFragment extends Fragment {
 
         //Count pour progressbar
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
-            int[] noteCount = new int[5]; // Pour les notes de 1 à 5
+            int[] noteCount = new int[5]; // Pour les notes de 1 à 5 creation tableau d'entier
 
-            for (Review review : reviews) {
-                if (review.getRate() >= 1 && review.getRate() <= 5) {
+            for (Review review : reviews) { //parcours de la liste des avis
+                if (review.getRate() >= 1 && review.getRate() <= 5) {  //vérifie si la note est comprise entre 1 et 5
                     noteCount[review.getRate() - 1]++; //incrementation note correspondante
                 }
             }
