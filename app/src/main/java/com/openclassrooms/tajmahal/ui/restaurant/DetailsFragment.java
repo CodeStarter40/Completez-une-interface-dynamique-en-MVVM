@@ -19,6 +19,9 @@ import android.widget.Toast;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
+
+import java.util.Locale;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -63,6 +66,51 @@ public class DetailsFragment extends Fragment {
         setupUI(); // Sets up user interface components.
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
+
+        //add stack code pour calcul l'average total review pour @id numberRating sur layout xml 
+        detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
+            if (reviews != null && !reviews.isEmpty()) {
+                float sum = 0;
+                for (Review review : reviews) {
+                    sum += review.getRate(); // Utilise getRate() pour obtenir la note de chaque avis
+                }
+                float average = sum / reviews.size();// calcul moyenne "float" si chiffre a virgule "Sum" divisé par le nombre de reviews
+                //binding vers l'id numberRating
+                binding.numberRating.setText(String.format("%.1f", average)); //affiche la moyenne calculée sur l'id numberRating
+            } else {
+                binding.numberRating.setText("ERREUR"); //si fail affiche erreur
+            }
+        });
+
+        //Count pour progressbar
+        detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
+            int[] noteCount = new int[5]; // Pour les notes de 1 à 5
+
+            for (Review review : reviews) {
+                if (review.getRate() >= 1 && review.getRate() <= 5) {
+                    noteCount[review.getRate() - 1]++; //incrementation note correspondante
+                }
+            }
+
+            // Mise à jour des progressbar
+            updateProgressBars(noteCount, reviews.size());
+        });
+
+
+    }
+
+    // declaration methode updateProgressBars
+    private void updateProgressBars(int[] noteCount, int totalReviews) {
+        if (totalReviews > 0); { //si 0 progressBar pas mise à jour.
+            // 0 compte 1
+            // binding des id
+            binding.progressBar4.setProgress((noteCount[4] * 100) / totalReviews); // Pour les notes de 5
+            binding.progressBar2.setProgress((noteCount[3] * 100) / totalReviews); // Pour les notes de 4
+            binding.progressBar3.setProgress((noteCount[2] * 100) / totalReviews); // Pour les notes de 3
+            binding.progressBar1.setProgress((noteCount[1] * 100) / totalReviews); // Pour les notes de 2
+            binding.progressBar5.setProgress((noteCount[0] * 100) / totalReviews); // Pour les notes de 1
+        }
+
     }
 
     /**
