@@ -9,6 +9,8 @@
         android:id="@+id/usernameTextView"
         android:layout_width="143dp"
         android:layout_height="29dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
         android:text="name nickname"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,11 +34,12 @@
 
     <RatingBar
         android:id="@+id/ratingBar2"
-        android:layout_width="230dp"
-        android:layout_height="41dp"
+        android:layout_width="252dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:progressTint="@color/yellow"
         android:numStars="5"
+        android:paddingStart="10dp"
+        android:progressTint="@color/yellow"
         android:rating="3"
         android:scaleX="0.5"
         android:scaleY="0.5"
@@ -48,15 +51,21 @@
 
     <TextView
         android:id="@+id/commentTextView"
-        android:layout_width="382dp"
-        android:layout_height="64dp"
+        android:layout_width="375dp"
+        android:layout_height="72dp"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896"
-        android:padding="10dp"
+        app:layout_constraintVertical_bias="0.89"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
