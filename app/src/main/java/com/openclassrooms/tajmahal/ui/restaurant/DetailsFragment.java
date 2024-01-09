@@ -8,12 +8,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.openclassrooms.tajmahal.R;
@@ -45,7 +47,7 @@ public class DetailsFragment extends Fragment {
      * Elle est utilisée pour effectuer une initialisation unique.
      *
      * @param savedInstanceState Un bundle contenant l'état de l'instance précédemment sauvegardé.
-     * Si le fragment est recréé à partir d'un état sauvegardé précédent, c'est cet état.
+     *                           Si le fragment est recréé à partir d'un état sauvegardé précédent, c'est cet état.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,9 +58,9 @@ public class DetailsFragment extends Fragment {
      * Cette méthode est appelée immédiatement après `onCreateView()`.
      * Utilisez cette méthode pour effectuer l'initialisation finale une fois que les vues du fragment ont été inf.
      *
-     * @param view La Vue retournée par `onCreateView()`.
+     * @param view               La Vue retournée par `onCreateView()`.
      * @param savedInstanceState Si non nul, ce fragment est en train d'être reconstruit
-     * à partir d'un état sauvegardé précédent comme indiqué ici.
+     *                           à partir d'un état sauvegardé précédent comme indiqué ici.
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -66,7 +68,6 @@ public class DetailsFragment extends Fragment {
         setupUI(); // Sets up user interface components.
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
-
 
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
             if (reviews != null && !reviews.isEmpty()) {
@@ -100,8 +101,23 @@ public class DetailsFragment extends Fragment {
                 binding.ratingBar.setRating(0);
                 binding.numberTotalRating.setVisibility(View.GONE);
             }
+
+        });
+
+        Button buttonLetRating = view.findViewById(R.id.buttonLetRating);
+        buttonLetRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new ReviewFragment())
+                        .addToBackStack(null) // Pour permettre à l'utilisateur de revenir au fragment précédent
+                        .commit();
+            }
         });
     }
+
+
 
     // declaration methode updateProgressBars
     private void updateProgressBars(int[] noteCount, int totalReviews) {
@@ -226,5 +242,4 @@ public class DetailsFragment extends Fragment {
     public static DetailsFragment newInstance() {
         return new DetailsFragment();
     }
-
 }
