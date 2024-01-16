@@ -8,6 +8,20 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="42dp"
+        android:layout_height="38dp"
+        android:contentDescription="Back"
+        android:src="@drawable/arrow"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
     <RatingBar
         android:id="@+id/ratingReviewBar"
         android:layout_width="244dp"
@@ -33,18 +47,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="139dp"
+        android:backgroundTint="@color/red"
         android:text="valider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ratingReviewBar"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="97dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="152dp"
         app:boxBackgroundColor="@android:color/transparent"
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
@@ -52,6 +68,7 @@
         app:boxCornerRadiusTopStart="8dp"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editTextReview"
         tools:ignore="MissingConstraints">
@@ -71,14 +88,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewsRecyclerView"
-        android:layout_width="402dp"
-        android:layout_height="602dp"
+        android:layout_width="403dp"
+        android:layout_height="480dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayoutReview"
+        app:layout_constraintTop_toBottomOf="@+id/editTextReview"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
         tools:listitem="@layout/item_review" />
 
@@ -86,29 +103,33 @@
         android:id="@+id/editTextReview"
         android:layout_width="369dp"
         android:layout_height="81dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="32dp"
         android:gravity="top|start"
         android:hint="Partagez ici les détails de votre expérience"
         android:inputType="textMultiLine"
         android:maxLength="240"
         android:minLines="3"
         android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="166dp" />
+        app:layout_constraintTop_toBottomOf="@+id/submitButton"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="92dp"
         android:layout_height="79dp"
+        android:layout_marginTop="41dp"
         android:layout_marginEnd="152dp"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextReview"
         app:layout_constraintEnd_toEndOf="@+id/ratingReviewBar"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818"
+        app:layout_constraintTop_toBottomOf="@+id/backButton"
         app:srcCompat="@drawable/manon_garcia" />
 
     <TextView
@@ -116,7 +137,7 @@
         android:layout_width="99dp"
         android:layout_height="25dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
         android:text="Manon Garcia"
         app:layout_constraintBottom_toTopOf="@+id/ratingReviewBar"

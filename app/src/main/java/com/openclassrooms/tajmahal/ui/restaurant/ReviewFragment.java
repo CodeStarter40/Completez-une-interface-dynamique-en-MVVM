@@ -49,5 +49,6 @@ public class ReviewFragment extends Fragment {
             // Mettre à jour l'adaptateur avec les nouvelles données
             reviewAdapter.setReviews(reviews);
         });
+
     }
 }
