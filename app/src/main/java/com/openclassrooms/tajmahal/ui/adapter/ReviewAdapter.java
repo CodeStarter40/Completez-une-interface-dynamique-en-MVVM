@@ -4,11 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.domain.model.Review;
 
@@ -40,7 +42,16 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         Review review = reviewList.get(position);
         holder.usernameTextView.setText(review.getUsername());
         holder.commentTextView.setText(review.getComment());
-        //ajouter photo et rating après essai
+        holder.ratingBar.setRating(review.getRate());
+        //Utilisation de Glide pour charger l'image du reviewer
+        if (review.getPicture() != null && !review.getPicture().isEmpty()) {
+            Glide.with(holder.itemView.getContext())
+                    .load(review.getPicture())
+                    .into(holder.picture);
+        } else {
+            //Gérer le cas où l'image est nulle ou vide,en affichant exemple une image par défaut
+            holder.picture.setImageResource(R.drawable.defaut_ui_image);
+        }
     }
 
     @Override
@@ -52,12 +63,15 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView usernameTextView;
         TextView commentTextView;
-        //ajout autre apres essai
+        RatingBar ratingBar;
+        ImageView picture;
 
         ViewHolder(View itemView) {
             super(itemView);
             usernameTextView = itemView.findViewById(R.id.usernameTextView); //ajout autre apres essai
             commentTextView = itemView.findViewById(R.id.commentTextView);
+            ratingBar = itemView.findViewById(R.id.reviewRatingBar);
+            picture = itemView.findViewById(R.id.picture);
         }
     }
 }
