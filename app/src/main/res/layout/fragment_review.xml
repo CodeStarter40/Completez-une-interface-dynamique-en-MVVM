@@ -87,8 +87,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewsRecyclerView"
-        android:layout_width="384dp"
-        android:layout_height="474dp"
+        android:layout_width="365dp"
+        android:layout_height="416dp"
         android:layout_marginTop="-10dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
