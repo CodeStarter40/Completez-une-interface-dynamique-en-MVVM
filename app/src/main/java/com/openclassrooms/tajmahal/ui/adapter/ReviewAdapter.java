@@ -47,6 +47,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         if (review.getPicture() != null && !review.getPicture().isEmpty()) {
             Glide.with(holder.itemView.getContext())
                     .load(review.getPicture())
+                    .circleCrop() //modification de la photo en circle
                     .into(holder.picture);
         } else {
             //Gérer le cas où l'image est nulle ou vide,en affichant exemple une image par défaut
