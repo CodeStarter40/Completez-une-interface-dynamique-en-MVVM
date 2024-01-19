@@ -98,7 +98,7 @@ public class ReviewFragment extends Fragment {
         submitButton.setOnClickListener(view -> {
             String comment = editTextComment.getText().toString();
             int rating = (int) ratingBar.getRating();
-            Review newReview = new Review("Manon Garcia","https://xsgames.co/randomusers/assets/avatars/female/3.jpg",comment,rating);
+            Review newReview = new Review("Manon Garcia","https://xsgames.co/randomusers/assets/avatars/female/3.jpg",comment,rating);//amelioration possible
 
             detailsViewModel.addReview(newReview);
 
