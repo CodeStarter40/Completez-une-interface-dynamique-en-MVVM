@@ -57,6 +57,8 @@ public class ReviewFragment extends Fragment {
 
             refreshReviews(); //rafraichi la page des reviews
             hideKeyboard(view); //abaisse le clavier apres ajout d'un avis
+            editTextComment.setText("");//clean le texte
+            editTextComment.setHint("Merci pour votre commentaire!"); //change le hint apres clique validate
         });
     }
 
