@@ -69,84 +69,57 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutReview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        app:boxBackgroundColor="@android:color/transparent"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextReview"
-        tools:ignore="MissingConstraints">
-
-    </com.google.android.material.textfield.TextInputLayout>
-
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toTopOf="@+id/reviewsRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextReview"
         app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="17dp" />
+        tools:ignore="MissingConstraints,NotSibling" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewsRecyclerView"
-        android:layout_width="373dp"
-        android:layout_height="418dp"
-        android:layout_marginTop="-10dp"
+        android:layout_width="370dp"
+        android:layout_height="643dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextReview"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
         tools:listitem="@layout/item_review" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextReview"
-        android:layout_width="360dp"
-        android:layout_height="118dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginBottom="32dp"
-        android:elevation="1dp"
-        android:gravity="top|start"
-        android:hint="Partagez ici les détails de votre expérience"
-        android:inputType="textMultiLine"
-        android:maxLength="240"
-        android:minLines="3"
-        android:padding="10dp"
-        android:shadowColor="@color/black"
-        android:shadowRadius="@integer/material_motion_duration_long_1"
-        app:layout_constraintBottom_toTopOf="@+id/view4"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="355dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="5dp"
+        android:hint="Décrivez votre experience"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitButton"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingReviewBar"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextReview"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="92dp"
         android:layout_height="79dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextReview"
         app:layout_constraintEnd_toStartOf="@+id/ratingReviewBar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton"
-        app:layout_constraintVertical_bias="0.179"
         app:srcCompat="@drawable/manon_garcia" />
 
     <TextView
@@ -155,6 +128,7 @@
         android:layout_height="25dp"
         android:gravity="center"
         android:text="Manon Garcia"
+        app:layout_constraintBottom_toTopOf="@+id/ratingReviewBar"
         app:layout_constraintEnd_toStartOf="@+id/submitButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
