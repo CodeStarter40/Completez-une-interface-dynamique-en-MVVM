@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.domain.model.Review;
 import com.openclassrooms.tajmahal.ui.adapter.ReviewAdapter;
@@ -72,6 +73,12 @@ public class ReviewFragment extends Fragment {
                 checkFieldsForEmptyValues();
             }
         });
+
+        ImageView imageView = view.findViewById(R.id.imageView); //ajout de l'image de profil sur url avec glide + effet Circle
+        Glide.with(this)
+                .load("https://xsgames.co/randomusers/assets/avatars/female/3.jpg")
+                .circleCrop()
+                .into(imageView);
         return view;
     }
     private void checkFieldsForEmptyValues() {
