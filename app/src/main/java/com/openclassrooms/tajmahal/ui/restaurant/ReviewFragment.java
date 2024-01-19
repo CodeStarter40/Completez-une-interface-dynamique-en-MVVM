@@ -1,7 +1,10 @@
 package com.openclassrooms.tajmahal.ui.restaurant;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +39,7 @@ public class ReviewFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout pour ce fragment
+        //Inflate the layout pour ce fragment
         View view = inflater.inflate(R.layout.fragment_review, container, false);
         submitButton = view.findViewById(R.id.submitButton);
         editTextComment = view.findViewById(R.id.editTextReview);
@@ -44,7 +47,44 @@ public class ReviewFragment extends Fragment {
         initRecyclerView(view);
         setupBackButton(view);
         setupSubmitButton();
+
+        editTextComment.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int count, int after) {
+                checkFieldsForEmptyValues();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                checkFieldsForEmptyValues();
+            }
+        });
         return view;
+    }
+    private void checkFieldsForEmptyValues() {
+        String comment = editTextComment.getText().toString();
+        float rating = ratingBar.getRating();
+
+        if (!comment.isEmpty() && rating > 0) {
+            submitButton.setEnabled(true);
+            submitButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
+        } else {
+            submitButton.setEnabled(false);
+            submitButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey)));
+        }
     }
 
     private void setupSubmitButton() {
