@@ -64,4 +64,7 @@ public class RestaurantRepository {
         liveDataReviews.setValue(restaurantApi.getReviews()); //met a jour les data de liveDataReviews / restaurantApi.getReviews() called pour recup la liste des avis
         return liveDataReviews; //renvoi l'instance MutableLiveData en liveDataReviews permet à l'observateur de voir les données sans les modifier
     }
+    public void addReview(Review review) {
+        restaurantApi.addReview(review);
+    }
 }
