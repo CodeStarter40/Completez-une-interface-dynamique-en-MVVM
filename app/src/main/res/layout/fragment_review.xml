@@ -84,16 +84,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewsRecyclerView"
-        android:layout_width="403dp"
-        android:layout_height="663dp"
+        android:layout_width="406dp"
+        android:layout_height="609dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints"
         tools:listitem="@layout/item_review" />
 
     <com.google.android.material.textfield.TextInputLayout
