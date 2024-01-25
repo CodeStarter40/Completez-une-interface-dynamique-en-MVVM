@@ -26,6 +26,9 @@ import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.domain.model.Review;
 import com.openclassrooms.tajmahal.ui.adapter.ReviewAdapter;
 
+import java.util.Collection;
+import java.util.Collections;
+
 public class ReviewFragment extends Fragment {
 
     private ReviewAdapter reviewAdapter;
@@ -102,7 +105,6 @@ public class ReviewFragment extends Fragment {
             Review newReview = new Review("Manon Garcia","https://xsgames.co/randomusers/assets/avatars/female/3.jpg",comment,rating);//amelioration possible
 
             detailsViewModel.addReview(newReview);
-
             refreshReviews(); //rafraichi la page des reviews
             hideKeyboard(view); //abaisse le clavier apres ajout d'un avis
             editTextComment.setText("");//clean le texte
@@ -141,9 +143,13 @@ public class ReviewFragment extends Fragment {
     }
 
     private void initRecyclerView(View view) {
-        // Initialisation du RecyclerView
+        //initialisation du RecyclerView
         reviewsRecyclerView = view.findViewById(R.id.reviewsRecyclerView);
-        reviewsRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        //inversion de l'affichage du linearlayoutmanager
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);//commencer l'affichage par la fin de la liste, correction du besoin de scroll
+        reviewsRecyclerView.setLayoutManager(layoutManager);
         reviewAdapter = new ReviewAdapter();
         reviewsRecyclerView.setAdapter(reviewAdapter);
     }
