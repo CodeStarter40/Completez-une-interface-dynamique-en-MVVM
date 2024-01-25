@@ -43,6 +43,7 @@ public class ReviewFragment extends Fragment {
         //Inflate the layout pour ce fragment
         View view = inflater.inflate(R.layout.fragment_review, container, false);
         submitButton = view.findViewById(R.id.submitButton);
+        submitButton.setEnabled(false);
         editTextComment = view.findViewById(R.id.editTextReview);
         ratingBar = view.findViewById(R.id.ratingBar);
         initRecyclerView(view);

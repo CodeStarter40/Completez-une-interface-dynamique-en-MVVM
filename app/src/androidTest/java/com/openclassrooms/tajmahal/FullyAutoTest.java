@@ -62,7 +62,7 @@ public class FullyAutoTest {
         onView(withId(R.id.buttonLetRating)).perform(click()); //verif fragment review affiché
         onView(withId(R.id.submitButton)).check(matches(not(isEnabled())));//verif bouton pas activé
         waitFor(1000);
-        onView(withId(R.id.editTextReview)).perform(ViewActions.typeText("Super restaurant"), ViewActions.closeSoftKeyboard()); //type comment auto
+        onView(withId(R.id.editTextReview)).perform(ViewActions.typeText("Super restaurant le message test est OK"), ViewActions.closeSoftKeyboard()); //type comment auto
         waitFor(1000);
         onView(withId(R.id.submitButton)).check(matches(not(isEnabled())));//verif bouton pas activé
         onView(withId(R.id.ratingBar)).perform(click()); //selection note
@@ -70,9 +70,9 @@ public class FullyAutoTest {
         onView(withId(R.id.submitButton)).perform(click()); //submit review
         waitFor(1000);
         onView(withId(R.id.reviewsRecyclerView)) //fait defiler le recycle jusqu'au comment test
-                .perform(RecyclerViewActions.scrollTo(hasDescendant(withText("Super restaurant"))));
+                .perform(RecyclerViewActions.scrollTo(hasDescendant(withText("Super restaurant le message test est OK"))));
         waitFor(1000);
-        onView(allOf(withId(R.id.commentTextView), withText("Super restaurant"))) //check que le text de test soit présent
+        onView(allOf(withId(R.id.commentTextView), withText("Super restaurant le message test est OK"))) //check que le text de test soit présent
                 .check(matches(isDisplayed()));
         waitFor(1000);
         onView(isRoot()).perform(ViewActions.pressBack());
