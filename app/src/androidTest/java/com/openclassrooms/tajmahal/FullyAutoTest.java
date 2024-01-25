@@ -52,7 +52,6 @@ public class FullyAutoTest {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
-            // Handle the exception
             Thread.currentThread().interrupt();
         }
     }
@@ -61,9 +60,11 @@ public class FullyAutoTest {
     public void testAddReview() {
         waitFor(2000);
         onView(withId(R.id.buttonLetRating)).perform(click()); //verif fragment review affiché
+        onView(withId(R.id.submitButton)).check(matches(not(isEnabled())));//verif bouton pas activé
         waitFor(1000);
         onView(withId(R.id.editTextReview)).perform(ViewActions.typeText("Super restaurant"), ViewActions.closeSoftKeyboard()); //type comment auto
         waitFor(1000);
+        onView(withId(R.id.submitButton)).check(matches(not(isEnabled())));//verif bouton pas activé
         onView(withId(R.id.ratingBar)).perform(click()); //selection note
         waitFor(1000);
         onView(withId(R.id.submitButton)).perform(click()); //submit review
