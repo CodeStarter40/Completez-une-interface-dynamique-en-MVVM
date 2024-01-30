@@ -56,6 +56,20 @@ public class DetailsViewModel extends ViewModel {
         return restaurantRepository.getReviews(); //accès aux data depuis le Repo, get la liste des reviews
     }
 
+
+    //methode public calculaverage pour test
+    public double calculateAverageRating(List<Review> reviews) {
+        if (reviews != null && !reviews.isEmpty()) {
+            double sum = 0;
+            for (Review review : reviews) {
+                sum += review.getRate();
+            }
+            return sum / reviews.size();
+        }
+        return 0.0;
+    }
+
+
     /**
      * Récupère les détails du restaurant Taj Mahal.
      *

@@ -242,4 +242,5 @@ public class DetailsFragment extends Fragment {
     public static DetailsFragment newInstance() {
         return new DetailsFragment();
     }
+
 }

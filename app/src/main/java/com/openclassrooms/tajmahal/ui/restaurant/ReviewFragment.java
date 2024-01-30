@@ -103,7 +103,6 @@ public class ReviewFragment extends Fragment {
             String comment = editTextComment.getText().toString();
             int rating = (int) ratingBar.getRating();
             Review newReview = new Review("Manon Garcia","https://xsgames.co/randomusers/assets/avatars/female/3.jpg",comment,rating);//amelioration possible
-
             detailsViewModel.addReview(newReview);
             refreshReviews(); //rafraichi la page des reviews
             hideKeyboard(view); //abaisse le clavier apres ajout d'un avis
@@ -156,7 +155,7 @@ public class ReviewFragment extends Fragment {
 
     private void observeReviews() {
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
-            // Mettre à jour l'adaptateur avec les nouvelles données
+            //maj de l'adaptateur avec les nouvelles données
             reviewAdapter.setReviews(reviews);
         });
 
