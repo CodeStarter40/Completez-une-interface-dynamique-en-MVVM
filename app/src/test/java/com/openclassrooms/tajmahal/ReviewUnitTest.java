@@ -76,7 +76,7 @@ public class ReviewUnitTest {
     }
 
     @Test
-    public void testAddReview(){ //test d'ajout review +
+    public void testAddReview(){ //test d'ajout review
         //création d'un nouvel avis
         Review newReview = new Review("Jeen","https://xsgames.co/randomusers/assets/avatars/female/3.jpg","Super restaurant",5);
         //ajout via méthode addReview
