@@ -69,24 +69,25 @@ public class ReviewUnitTest {
         assertEquals(4, review.getRate());
     }
     @Test
-    public void testFakeApiResponses() {
+    public void testFakeApiResponses() { //test de la fakeApi
         RestaurantFakeApi fakeApi = new RestaurantFakeApi();
         assertNotNull(fakeApi.getRestaurant());
         assertNotNull(fakeApi.getReviews());
     }
 
     @Test
-    public void testAddReview(){
+    public void testAddReview(){ //test d'ajout review +
         //création d'un nouvel avis
         Review newReview = new Review("Jeen","https://xsgames.co/randomusers/assets/avatars/female/3.jpg","Super restaurant",5);
-        //ajout
+        //ajout via méthode addReview
         detailsViewModel.addReview(newReview);
         //recup liste avis apres l'add
-        List<Review> reviews = detailsViewModel.getReviews().getValue();
+        List<Review> reviews = detailsViewModel.getReviews().getValue();//recup la liste de review via getreview stocké dans reveiws
         //Verification avis top list
-        assertNotNull(reviews);
-        assertFalse(reviews.isEmpty());
-        Review addedReview = reviews.get(0);
+        assertNotNull(reviews);//pas nul, init avec succès
+        assertFalse(reviews.isEmpty());//verif non empty et donc rajouté avec succès
+        Review addedReview = reviews.get(0);//recup review à la premiere position
+        //comparaison des resultats
         assertEquals(newReview.getUsername(), addedReview.getUsername());
         assertEquals(newReview.getPicture(), addedReview.getPicture());
         assertEquals(newReview.getComment(), addedReview.getComment());
