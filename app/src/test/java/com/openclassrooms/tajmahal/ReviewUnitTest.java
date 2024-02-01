@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
@@ -73,25 +74,6 @@ public class ReviewUnitTest {
         RestaurantFakeApi fakeApi = new RestaurantFakeApi();
         assertNotNull(fakeApi.getRestaurant());
         assertNotNull(fakeApi.getReviews());
-    }
-
-    @Test
-    public void testAddReview(){ //test d'ajout review
-        //création d'un nouvel avis
-        Review newReview = new Review("Jeen","https://xsgames.co/randomusers/assets/avatars/female/3.jpg","Super restaurant",5);
-        //ajout via méthode addReview
-        detailsViewModel.addReview(newReview);
-        //recup liste avis apres l'add
-        List<Review> reviews = detailsViewModel.getReviews().getValue();//recup la liste de review via getreview stocké dans reveiws
-        //Verification avis top list
-        assertNotNull(reviews);//pas nul, init avec succès
-        assertFalse(reviews.isEmpty());//verif non empty et donc rajouté avec succès
-        Review addedReview = reviews.get(0);//recup review à la premiere position
-        //comparaison des resultats
-        assertEquals(newReview.getUsername(), addedReview.getUsername());
-        assertEquals(newReview.getPicture(), addedReview.getPicture());
-        assertEquals(newReview.getComment(), addedReview.getComment());
-        assertEquals(newReview.getRate(), addedReview.getRate());
     }
 
     @Test

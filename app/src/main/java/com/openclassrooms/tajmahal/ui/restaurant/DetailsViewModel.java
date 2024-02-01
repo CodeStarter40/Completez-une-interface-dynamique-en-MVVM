@@ -32,6 +32,7 @@ public class DetailsViewModel extends ViewModel {
     private MutableLiveData<List<Review>> reviewsLiveData;
 
     public void addReview(Review review) {
+
         restaurantRepository.addReview(review);
     }
 

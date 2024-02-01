@@ -40,7 +40,6 @@ public class RestaurantFakeApi implements RestaurantApi {
             new Review("Emilie Hood", "https://xsgames.co/randomusers/assets/avatars/female/20.jpg", "Très bon restaurant Indien ! Je recommande.", 4)
     ));
 
-
     /**
      * Récupère un objet {@link Restaurant} codé en dur pour le "Taj Mahal".
      * <p>
@@ -72,10 +71,12 @@ public class RestaurantFakeApi implements RestaurantApi {
 
     @Override
     public List<Review> getReviews() {
+
         return reviews;
     }
 
     public void addReview(Review review) {
+
         reviews.add(review);
     }
 
