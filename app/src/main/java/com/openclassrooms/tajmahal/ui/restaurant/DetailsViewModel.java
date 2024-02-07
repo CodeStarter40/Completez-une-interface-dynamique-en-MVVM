@@ -3,6 +3,7 @@ package com.openclassrooms.tajmahal.ui.restaurant;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.openclassrooms.tajmahal.R;
@@ -12,6 +13,7 @@ import com.openclassrooms.tajmahal.domain.model.Review;
 
 import javax.inject.Inject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,7 +28,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class DetailsViewModel extends ViewModel {
 
-    private final RestaurantRepository restaurantRepository;
+    private  RestaurantRepository restaurantRepository;
+    private MutableLiveData<List<Review>> reviewsLiveData;
+
+    public void addReview(Review review) {
+
+        restaurantRepository.addReview(review);
+    }
 
     /**
      * Constructeur que Hilt utilisera pour créer une instance de MainViewModel.
@@ -36,6 +44,8 @@ public class DetailsViewModel extends ViewModel {
     @Inject
     public DetailsViewModel(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
+        this.reviewsLiveData = new MutableLiveData<>();
+        getReviews();
     }
 
     /**
@@ -46,6 +56,20 @@ public class DetailsViewModel extends ViewModel {
     public LiveData<List<Review>> getReviews() { // methode pour acceder aux avis depuis l'exterieur du Vm
         return restaurantRepository.getReviews(); //accès aux data depuis le Repo, get la liste des reviews
     }
+
+
+    //methode public calculaverage pour test
+    public double calculateAverageRating(List<Review> reviews) {
+        if (reviews != null && !reviews.isEmpty()) {
+            double sum = 0;
+            for (Review review : reviews) {
+                sum += review.getRate();
+            }
+            return sum / reviews.size();
+        }
+        return 0.0;
+    }
+
 
     /**
      * Récupère les détails du restaurant Taj Mahal.

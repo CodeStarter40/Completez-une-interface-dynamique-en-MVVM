@@ -8,12 +8,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.openclassrooms.tajmahal.R;
@@ -45,7 +47,7 @@ public class DetailsFragment extends Fragment {
      * Elle est utilisée pour effectuer une initialisation unique.
      *
      * @param savedInstanceState Un bundle contenant l'état de l'instance précédemment sauvegardé.
-     * Si le fragment est recréé à partir d'un état sauvegardé précédent, c'est cet état.
+     *                           Si le fragment est recréé à partir d'un état sauvegardé précédent, c'est cet état.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,9 +58,9 @@ public class DetailsFragment extends Fragment {
      * Cette méthode est appelée immédiatement après `onCreateView()`.
      * Utilisez cette méthode pour effectuer l'initialisation finale une fois que les vues du fragment ont été inf.
      *
-     * @param view La Vue retournée par `onCreateView()`.
+     * @param view               La Vue retournée par `onCreateView()`.
      * @param savedInstanceState Si non nul, ce fragment est en train d'être reconstruit
-     * à partir d'un état sauvegardé précédent comme indiqué ici.
+     *                           à partir d'un état sauvegardé précédent comme indiqué ici.
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -67,49 +69,55 @@ public class DetailsFragment extends Fragment {
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
 
-        //add stack code pour calcul l'average total review pour @id numberRating sur layout xml 
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
-            if (reviews != null && !reviews.isEmpty()) { // Verification qe la liste n'est pas null et pas vide. (avant process)
-                float sum = 0; //init var "sum" de type float à 0 avant cumul de la somme totale des avis
-                for (Review review : reviews) { //boucle for-each qui parcours chaque avis dans la liste reviews
-                    sum += review.getRate(); // Utilise getRate() pour obtenir la note de chaque avis et fait un add sur la var "sum"
+            if (reviews != null && !reviews.isEmpty()) {
+                float sum = 0;
+
+                int[] noteCount = new int[5]; // Pour les notes de 1 à 5
+                for (Review review : reviews) {
+
+                    //calcul de la somme pour la moyenne
+                    sum += review.getRate();
+
+                    //incrémentation pour les compteurs de notes
+                    if (review.getRate() >= 1 && review.getRate() <= 5) {
+                        noteCount[review.getRate() - 1]++;
+                    }
                 }
-                float average = sum / reviews.size();// calcul moyenne "float" si chiffre a virgule "Sum" divisé par le nombre de reviews
-                //binding vers l'id numberRating
-                binding.numberRating.setText(String.format("%.1f", average)); //affiche la moyenne calculée sur l'id numberRating / "%.1f" formatage 3.456 to 3.5 plus propre pour l'interface user
-                binding.ratingBar.setRating(average); // modifie le nombre d'etoile en fonction du nombre obtenu par l'average des notes critiques
+                //count et affichage de la moyenne
+                float average = sum / reviews.size();
+                binding.numberRating.setText(String.format("%.1f", average));
+                binding.ratingBar.setRating(average);
+
+                //Maj des ProgressBar
+                updateProgressBars(noteCount, reviews.size());
+
+                //Maj du nombre total de reviews
+                binding.numberTotalRating.setText("(" + reviews.size() + ")");
+                binding.numberTotalRating.setVisibility(View.VISIBLE);
             } else {
-                binding.numberRating.setText("ERREUR"); //si fail affiche erreur ( petite fantaisie )
+                //gestion du cas où il n'y a pas de reviews
+                binding.numberRating.setText("ERREUR");
+                binding.ratingBar.setRating(0);
+                binding.numberTotalRating.setVisibility(View.GONE);
             }
+
         });
 
-        //Count pour progressbar
-        detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
-            int[] noteCount = new int[5]; // Pour les notes de 1 à 5 creation tableau d'entier
-
-            for (Review review : reviews) { //parcours de la liste des avis
-                if (review.getRate() >= 1 && review.getRate() <= 5) {  //vérifie si la note est comprise entre 1 et 5
-                    noteCount[review.getRate() - 1]++; //incrementation note correspondante
-                }
-            }
-
-            // Mise à jour des progressbar
-            updateProgressBars(noteCount, reviews.size());
-        });
-
-        //count pour le nombre total de review pour l'@+id/numberTotalRating
-        detailsViewModel.getReviews().observe(getViewLifecycleOwner(),reviews -> {
-            if (reviews !=null) {
-                //obtenir le nombre total de review dans une variable int
-                int totalReviewCount = reviews.size();
-                //mise à jour du textsize dans le layout xml
-                binding.numberTotalRating.setText("(" + totalReviewCount + ")");
-                binding.numberTotalRating.setVisibility(View.VISIBLE); //rend le text visible si count ok
-            } else {
-                binding.numberTotalRating.setVisibility(View.GONE); //cache le nombre de critique si 0
+        Button buttonLetRating = view.findViewById(R.id.buttonLetRating);
+        buttonLetRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new ReviewFragment())
+                        .addToBackStack(null) // Pour permettre à l'utilisateur de revenir au fragment précédent
+                        .commit();
             }
         });
     }
+
+
 
     // declaration methode updateProgressBars
     private void updateProgressBars(int[] noteCount, int totalReviews) {
